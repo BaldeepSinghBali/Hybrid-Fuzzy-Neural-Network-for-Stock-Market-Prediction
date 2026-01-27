@@ -1,1 +1,618 @@
+HTML Part 
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Fuzzy Neural Network | Stock Prediction</title>
+    <link rel="stylesheet" href="q.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        window.onload = function() {
+            var tickers = ["AAPL", "TSLA", "RELIANCE", "TATA","INFOSYS","SBI"]; // Example stock tickers
+            var index = 0;
+            setInterval(function() {
+                document.getElementById("stockTicker").innerText = tickers[index]; 
+                index = (index + 1) % tickers.length; 
+            }, 2000); 
+        };
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">FuzzyStock AI</a>  
+        <nav class="navbar">
+            <a href="#" class="active">Home</a>
+            <a href="#">Predict</a>
+            <a href="#">Methodology</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <section class="home">
+        <span class="home-imgleft"></span>
+        <div class="home-content">
+            <h1>Hybrid Fuzzy Neural Network</h1>
+            <h3>Predict <span id="stockTicker">NIFTY50</span> Trends</h3>
+            <p>Our AI model combines fuzzy logic and neural networks to forecast stock market movements with 89% accuracy. Input a stock symbol to get started.</p>
+            
+            <!-- Stock Search Bar -->
+            <div class="ticker-container">
+                <div class="ticker">
+                    <span>📈 AAPL: $182.34 (+1.2%)</span>
+                    <span>📉 TSLA: $168.29 (-0.8%)</span>
+                    <span>📈 RELIANCE: ₹2,856 (+2.1%)</span>
+                    <span>📊 NIFTY50: 22,104.05 (+0.9%)</span>
+                    <span>📈 TATA: ₹3,421 (+1.5%)</span>
+                </div>
+            </div>
+             
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search stocks (e.g., AAPL)" class="search-input" id="stockInput">
+                <button class="search-btn" id="predictBtn">
+                    <i class="fas fa-chart-line"></i> Predict
+                </button>
+                <button class="voice-btn" id="voiceBtn">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+            <div class="signal-container"></div>
+                <div class="signal buy">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>BUY Signal</span>
+                </div>
+                <div class="signal sell">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>SELL Signal</span>
+                </div>
+            </div>  
+                        
+            
+            <div class="home-sci">
+                <a href="#"><i class='bx bxl-github'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+            </div>
+            
+        </div>
+        <span class="home-imghover"></span>
+    </section>
+    
+
+    <script>
+        // Placeholder for prediction functionality
+        document.getElementById('predictBtn').addEventListener('click', function() {
+            const stock = document.getElementById('stockInput').value;
+            if (stock) {
+                alert(`Running prediction for ${stock}...`);
+                // Actual API call would go here
+            }
+        });
+    </script>
+</body>
+</html>
+
+ 
+CSS Part  
+ 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body{
+    background: #081b29;
+    color:white;
+}
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    padding:20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.logo{
+    position: relative;
+    font-size: 25px;
+    color:white;
+    text-decoration: none;
+    font-weight: 600;
+}
+.logo::before{
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:#081b29;
+    animation:showRight 1s ease forwards;
+    animation-delay: .8s;
+    
+}
+.navbar a{
+    font-size: 18px;
+    color:white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: 3s;
+}
+.navbar a:hover,
+.navbar a.active{
+    color:#164457;
+}
+.home{
+    height:100vh;
+    display: flex;
+    align-items: center;
+    padding:0 10%;
+    background: url(home.jpg) no-repeat;
+    background: cover;
+    background-position: center;
+}
+.home-content{
+    max-width: 600px;
+
+}
+.home-content h1{
+    position: relative;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.home-content h1::before{
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:#081b29;
+    animation:showRight 1s ease forwards;
+    animation-delay: .4s;
+    
+}
+.home-content h3{
+    position: relative;
+    font-size: 32px;
+    font-weight: 700;
+    color:#00abf0;
+
+}
+.home-content h3::before{
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:#081b29;
+    animation:showRight 1s ease forwards;
+    animation-delay: 1.2s;
+    
+}
+#language{
+    position: relative;
+    font-size: 32px;
+    font-weight: 700;
+    color:#00abf0;
+
+}
+#language{
+    content:'';
+    position: absolute;
+    top:-20px;
+    left:370px;
+    width:100%;
+    height:100%;
+    background:#081b29;
+    animation:showRight 1s ease forwards;
+    animation-delay: 1.2s;
+}
+.home-content p{
+    position: relative;
+    font-size: 16px;
+    margin: 20px 0 40px;
+}
+.home-content p::before{
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:#081b29;
+    animation:showRight 1s ease forwards;
+    animation-delay: 2.5s;
+    
+}
+.home-content .btn-box{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width:345px;
+    height:50px;
+    
+
+}
+.home-content .btn-box::before{
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:#081b29;
+    animation:showRight 1s ease forwards;
+    animation-delay: 2.5s;
+    z-index: 2;
+}
+.btn-box a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width:90px;
+    height:100%;
+    background: #00abf0;
+    border:2px solid #00abf0;
+    border-radius: 8px;
+    font-size: 15px;
+    color:#081b29;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+}
+.btn-box a:nth-child(2){
+    background: transparent;
+    color:#00abf0;
+}
+.btn-box a:nth-child(2):hover{
+    color: #081b29;
+}
+.btn-box a:nth-child(2)::before{
+    background: #00abf0;
+}
+.btn-box a::before{
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width:0;
+    height: 100%;
+    background: #081b29;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn-box a:hover::before{
+    
+    width:100%;
+    
+}
+.btn-box a:hover{
+    color:#00abf0;
+}
+
+.home-sci{
+    position: absolute;
+    bottom: 40px;
+    width:170px;
+   
+    display: flex;
+    justify-content: space-between;
+
+}
+.home-sci a::before{
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:#0b87e0;
+    animation:showRight 1s ease forwards;
+    animation-delay: 2.5s;
+    
+}
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width:40px;
+    height:40px;
+    background: transparent;
+    border:2px solid #00abf0;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #00abf0;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+.home-sci a:hover{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width:40px;
+    height:40px;
+    background: #00abf0;
+    border:2px solid #00abf0;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #090909;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+.home-sci a::before{
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: #00abf0;
+    z-index: -1;
+    transition: .5s;
+}
+.home-sci a:hover::before{
+    width:100%;
+    background: #00abf0;
+}
+.home-imghover{
+    position: absolute;
+    top:0;
+    right:1px;
+    width:550px;
+    height:100%;
+    background:transparent;
+    
+    transition:3s;
+}
+.home-imghover:hover{
+background:#081b29;
+opacity: .8;
+}
+
+@keyframes showRight{
+    100%{
+        width:0;
+    }
+}
+.home-imghover::after{
+    content:'';
+    position: absolute;
+    top:0;
+    right:0;
+    width:110%;
+    height:100%;
+    background:#081b29;
+    animation:showRight 1s ease forwards;
+    animation-delay: 0s;
+    z-index: 2;
+    
+}
+/* ===== New Stock Search Bar ===== */
+.search-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    height: 60px;
+    margin: 30px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 171, 240, 0.2);
+    transition: all 0.3s ease;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #081b29;
+}
+
+.search-btn {
+    padding: 0 25px;
+    border: none;
+    background: #00abf0;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.voice-btn {
+    width: 60px;
+    border: none;
+    background: #164457;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #0077cc;
+}
+
+.voice-btn:hover {
+    background: #00abf0;
+}
+
+/* ===== Updated Text Styles ===== */
+.home-content h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.home-content h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 17px;
+    line-height: 1.6;
+    opacity: 0.9;
+    max-width: 550px;
+}
+
+/* ===== Ticker Animation ===== */
+#stockTicker {
+    display: inline-block;
+    min-width: 120px;
+    text-align: center;
+    color: #00ff88; /* Green for stocks */
+}
+
+/* ===== Left Image (stock.jpg) ===== */
+.ticker-container {
+    margin: 25px 0;
+    overflow: hidden;
+    border-radius: 6px;
+    background: rgba(0, 171, 240, 0.1);
+    border-left: 3px solid #00abf0;
+}
+
+.ticker {
+    display: flex;
+    animation: tickerScroll 20s linear infinite;
+    width: max-content;
+}
+
+.ticker span {
+    padding: 10px 25px;
+    font-size: 15px;
+    color: #00ff88;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+@keyframes tickerScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== Left Image (stock.jpg) ===== */
+/* ===== Buy/Sell Signal Fix ===== */
+.signal-container {
+    display: flex;
+    justify-content: space-between; /* Changed from gap to space-between */
+    max-width: 400px; /* Limits container width */
+    margin: 30px 0;
+}
+
+.signal {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    width: 45%; /* Gives equal width */
+}
+
+.buy {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+    border: 1px solid #00ff88;
+}
+
+.sell {
+    background: rgba(255, 77, 77, 0.2);
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+.signal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Image Smoothing & Overlay ===== */
+.home-imgleft {
+    position: absolute;
+    top: 00px;
+    left: 0;
+    width: 1000px; /* Full width */
+    height: 1000px;
+    background: url('stock.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    animation: fadeInLeft 1s ease forwards;
+}
+
+/* Gradient Overlay */
+.home-imgleft::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        rgba(8, 27, 41, 0.8) 0%, 
+        rgba(8, 27, 41, 0.4) 50%, 
+        rgba(8, 27, 41, 0) 100%
+    );
+    z-index: 1;
+}
+
+/* Right Image Overlay */
+.home-imghover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        270deg, 
+        rgba(8, 27, 41, 0.8) 0%, 
+        rgba(8, 27, 41, 0.4) 50%, 
+        rgba(8, 27, 41, 0) 100%
+    );
+    z-index: 1;
+}
+
+/* Animation */
+@keyframes fadeInLeft {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.home-imgleft, .home-imghover {
+    mask-image: linear-gradient(
+        to right, 
+        black 0%, 
+        black 90%, 
+        transparent 100%
+    );
+}
+.signal {
+    backdrop-filter: blur(5px);
+    border: 2px solid currentColor;
+} 
 
